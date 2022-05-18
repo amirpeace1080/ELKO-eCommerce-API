@@ -45,7 +45,6 @@ export default createStore({
             localStorage.setItem("token", token);
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
             commit("auth_success", token);
-            console.log(resp)
             resolve(resp);
           })
           .catch((err) => {
@@ -63,6 +62,18 @@ export default createStore({
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });
-  }
+  },
+  account({ commit }) {
+    return new Promise((resolve) => {
+      axios({ url: `${mainurl}/v3.0/api/Accounts/My`, method: 'GET' })
+        .then((resp) => {
+          console.log('account', resp);
+          commit("auth_success", localStorage.getItem('token'))
+          resolve(resp)
+        })
+    })
+  },
+
+
 }
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <Navbar />
-    <h3> {{ this.$store.state.token }} </h3>
+    <h3> About Page... </h3>
   </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   name: 'AboutView',
   components: {
     Navbar
+  },
+  created() {
+    this.$store.dispatch('account').then((res) => {
+      console.log('hello', res);
+    })
   }
 }
 </script>

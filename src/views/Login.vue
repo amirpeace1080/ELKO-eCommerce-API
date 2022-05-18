@@ -32,8 +32,8 @@ export default {
             let password = this.password
             this.$store.dispatch("login", {username, password})
             .then(()=>{
-              this.$router.push('/')
-              // window.location = "/";
+              // this.$router.push('/')
+              window.location = "/";
             })
         }
     },
